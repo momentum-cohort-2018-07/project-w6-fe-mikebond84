@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './index.css'
 import 'bulma/css/bulma.css'
+import Bookentry from './Bookentry'
 import request from 'superagent'
 
 class App extends Component {
@@ -11,26 +12,6 @@ class App extends Component {
     }
   }
 
-  render () {
-    console.log('render')
-    return (
-      <div className='app'>
-        {this.state.books.map((book, idx) =>
-          <div key={idx}>
-            {book.title}
-            {book.author}
-            {book.shortDescription}
-            {book.coverImageUrl}
-            {book.url}
-            {book.publisher}
-            {book.publication}
-            {book.detailedDescription}
-          </div>
-        )}
-      </div>
-    )
-  }
-
   componentDidMount () {
     request
       .get('http://localhost:4000/books')
@@ -39,6 +20,15 @@ class App extends Component {
           books: res.body
         })
       })
+  }
+
+  render () {
+    return (
+      <div className='books'>
+        {(this.state.books.map((book, idx) =>
+          <Bookentry key={idx} book={book} />))}
+      </div>
+    )
   }
 }
 

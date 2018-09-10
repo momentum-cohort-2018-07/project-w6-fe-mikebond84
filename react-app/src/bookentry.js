@@ -28,7 +28,7 @@ class Bookentry extends React.Component {
                   </h2>
                 </div>
                 <div id='image'>
-                  <img className='book-image' src={book.coverImgUrl} alt='Cover' id='box' />
+                  <img className='book-image' src={book.coverImageUrl} alt='Cover' onError={i => { i.target.style.display = 'none' }} />
                 </div>
               </div>
               <button className='btn btn-link' data-toggle='collapse' data-target='#collapseOne' aria-expanded='true' aria-controls='collapseOne'>

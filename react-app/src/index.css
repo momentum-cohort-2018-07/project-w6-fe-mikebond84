@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+  display: flex;
 }
 
 #title {
@@ -16,9 +17,52 @@ body {
   margin: 15px;
 }
 
-#shortDescription {
+#column {
+  display: flex;
   font-size: 18px;
   margin-left: 15px;
   margin-bottom: 5px;
   margin-top: 5px;
 }
+
+.columns {
+  background: #BFEDC1;
+}
+#shortDescription {
+  margin-left: 15px;
+}
+
+#content2 {
+  font-size: 18px;
+  margin-left: 15px;
+  margin-bottom: 5px; 
+  margin-top: 5px;
+}
+
+.column {
+  display: flex;
+  font-size: 18px;
+  margin-left: 15px;
+  margin-bottom: 5px; 
+  margin-top: 5px;
+}
+
+.column is-four-fifths {
+  display: flex;
+  font-size: 18px;
+  margin-left: 15px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.book-image {
+  margin-top: 35px;
+}
+
+.expand-info {
+  font-size: 18px;
+  margin-left: 15px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+

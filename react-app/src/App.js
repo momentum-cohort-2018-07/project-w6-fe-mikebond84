@@ -24,7 +24,7 @@ class App extends Component {
 
   render () {
     return (
-      <div className='books'>
+      <div className='App'>
         {(this.state.books.map((book, idx) =>
           <Bookentry key={idx} book={book} />))}
       </div>

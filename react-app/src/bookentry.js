@@ -5,50 +5,51 @@ class Bookentry extends React.Component {
   constructor (props) {
     super()
     this.state = {
+      isExpanded: false
     }
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick () {
+    this.setState(state => ({
+      isExpanded: !state.isExpanded
+    }))
   }
 
   render () {
     let {book} = this.props
     return (
-      <div id='accordion'>
-        <div className='card'>
-          <div className='card-header' id='headingOne'>
-            <h5 className='mb-0'>
-              <div id='book' key={this.props.idx}>
-                <div id='content'>
-                  <h2 id='title'>
-                    {book.title}
-                  </h2>
-                  <h2 id='author'>
-                    {book.author}
-                  </h2>
-                  <h2 id='shortDescription'>
-                    {book.shortDescription}
-                  </h2>
-                </div>
-                <div id='image'>
-                  <img className='book-image' src={book.coverImageUrl} alt='Cover' onError={i => { i.target.style.display = 'none' }} />
-                </div>
-              </div>
-              <button className='btn btn-link' data-toggle='collapse' data-target='#collapseOne' aria-expanded='true' aria-controls='collapseOne'>
-                More Information
-              </button>
-            </h5>
-          </div>
-          <div id='collapseOne' className='collapse show' aria-labelledby='headingOne' data-parent='#accordion'>
-            <div className='card-body'>
-              <div id='content2'>
-                <p><strong>URL:</strong> <a href={book.url}>{book.url}</a></p>
-                <p><strong>Publisher:</strong> {book.publisher}</p>
-                <p><strong>Publication Date:</strong> {book.publicationDate}</p>
-                <p><strong>Full Description:</strong> {book.detailedDescription}</p>
-              </div>
+      <div className='columns'>
+        <div className='column'>
+          <img className='book-image' src={book.coverImageUrl}
+            alt='Cover' onError={i => { i.target.style.display = 'none' }} />
+        </div>
+        <div className='column is-four-fifths'>
+          <div id='book' key={this.idx}>
+            <div id='content'>
+              <h2 id='title'>
+                {book.title}
+              </h2>
+              <h2 id='author'>
+                {book.author}
+              </h2>
+              <h2 id='shortDescription'>
+                {book.shortDescription}
+              </h2>
             </div>
+          </div>
+          <div>
+            {this.state.isExpanded ? (<div id='content2'>
+              <button className='expandInfo' onClick={this.handleClick}>Less Information</button>
+              <p><a href={book.url}>{book.url}</a></p>
+              <p>{book.publisher}, {book.publicationDate}</p>
+
+              <p>{book.detailedDescription}</p>
+            </div>
+            ) : <button className='expandInfo' onClick={this.handleClick}>More Information</button> }
           </div>
         </div>
       </div>
-
     )
   }
 }
